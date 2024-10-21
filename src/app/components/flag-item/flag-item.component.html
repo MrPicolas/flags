@@ -1,0 +1,9 @@
+<div class="flag-container" (click)="onClick($event)" [ngClass]="{ 'expanded': isExpanded }">
+  <img class="flag-image" [src]="flag.imageUrl" [alt]="flag.name"/>
+</div>
+<div>
+  <p [ngClass]="isDarkTheme ? 'flag-name-dark' : 'flag-name'">{{ flag.name }}</p>
+  <div *ngIf="isExpanded" class="flag-details">
+  <p>Detalhes da bandeira: {{ flag.name }}</p>
+</div>
+  

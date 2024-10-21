@@ -1,0 +1,10 @@
+<div class="flag-list">
+  <div *ngFor="let flag of flags; let i = index" (click)="toggleFlag(i)">
+    <app-flag-item [flag]="flag" [isExpanded]="expandedFlagIndex === i"></app-flag-item>
+  </div>
+</div>
+<div *ngFor="let flag of flags">
+  <app-flag-item [flag]="flag" [isDarkTheme]="isDarkTheme"></app-flag-item> <!-- Passa o tema -->
+</div>
+
+
