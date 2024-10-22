@@ -1,6 +1,5 @@
 .flag-list {
   left: 5%;
-  //margin-top: 400px;
   display: grid; // Define o contêiner como uma grade
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); // Cria colunas responsivas
   gap: 50px; // Espaçamento entre os cards

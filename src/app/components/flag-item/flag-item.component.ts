@@ -1,4 +1,4 @@
-import { SimpleChanges ,Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, OnChanges } from '@angular/core';
+import {ChangeDetectionStrategy ,SimpleChanges ,Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '@services/theme.service'; 
 
@@ -8,7 +8,7 @@ import { ThemeService } from '@services/theme.service';
   templateUrl: './flag-item.component.html',
   styleUrls: ['./flag-item.component.scss'],
   imports: [CommonModule],
-
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlagItemComponent implements OnInit, OnChanges {
 
@@ -16,21 +16,11 @@ export class FlagItemComponent implements OnInit, OnChanges {
   
   @ViewChild('nameFlag') nameFlag!: ElementRef;
 
-  // constructor(private themeService: ThemeService) {
-  //   this.themeService.isDarkTheme.subscribe(value => {
-  //     this.isDarkTheme = value;
-  //     this.toggleTheme();
-  //   });
-  // }
-
   @Input() isDarkTheme = false;
   @Input() flag!: { name: string; imageUrl: string };
   @Input() isExpanded = false;
-  @Input() themeChanged = EventEmitter
+  //@Input() themeChanged = EventEmitter
   @Output() flagClicked = new EventEmitter<string>();
-  // @Output() themeChanged = new EventEmitter<boolean>();
-
-
 
   onClick(event: MouseEvent) {
     console.log(this.flag.name);
@@ -39,7 +29,7 @@ export class FlagItemComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('isDarkTheme recebido:', this.isDarkTheme); // Verifica o valor recebido
+    console.log('isDarkTheme recebido:', this.isDarkTheme);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -52,31 +42,11 @@ export class FlagItemComponent implements OnInit, OnChanges {
     }
   }
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes['isDarkTheme']) {
-  //     console.log('isDarkTheme atualizado:', this.isDarkTheme); // Verifica o valor atualizado
-  //     console.log('Tema recebido pelo FlagItemComponent:', this.isDarkTheme);
-
-  //   }
-  // }
     onThemeChanged(isDark: boolean) {
       this.isDarkTheme = isDark;
-      console.log('Tema propagado para o AppComponent:', this.isDarkTheme);
-  
+      console.log('Tema propagado para o ItemComponent:', this.isDarkTheme);
     }
   }
-
-  // toggleTheme() {
-      
-  //   this.isDarkTheme = !this.isDarkTheme;
-  //   if (document.body.classList.contains('dark-theme')) {
-  //     this.nameFlag.nativeElement.classList.toggle('flag-name-dark', this.isDarkTheme);
-  //     console.log('ativou dark-theme para o nome da bandeira')
-  //     }
-  //     else {
-  //       console.log('não ativou, o nome está escuro ainda.')
-  //     }
-  //   }
   
 
 

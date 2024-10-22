@@ -27,7 +27,7 @@ export class HeaderComponent{
     console.log('Método toggleTheme chamado');
     
     this.isDarkTheme = !this.isDarkTheme;
-    this.themeChanged.emit(!this.isDarkTheme);
+    this.themeChanged.emit(this.isDarkTheme);
     document.body.classList.toggle('dark-theme', this.isDarkTheme)
     
     console.log('Tema alterado:', this.isDarkTheme);
